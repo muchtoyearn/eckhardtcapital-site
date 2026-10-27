@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eckhardt Capital — Metis Multi-Strategy Fund</title>
+<meta name="description" content="Eckhardt Capital — Metis Multi-Strategy Fund performance, letters and documents.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=IBM+Plex+Mono:wght@400;500&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="brand">
+  <a href="#home" aria-label="Eckhardt Capital home">
+    <img src="assets/logo.png" alt="" width="34" height="38">
+    <span>ECKHARDT<br>CAPITAL</span>
+  </a>
+</header>
+
+<nav class="side-nav" aria-label="Sections">
+  <a href="#home" data-s="home">Home <i></i></a>
+  <a href="#strategy" data-s="strategy">Strategy <i></i></a>
+  <a href="#letters" data-s="letters">Letters <i></i></a>
+  <a href="#documents" data-s="documents">Documents <i></i></a>
+</nav>
+
+<main>
+  <section id="home" class="panel">
+    <div class="wrap">
+      <a class="headline" id="headline" target="_blank" rel="noopener"></a>
+      <div class="chart-box">
+        <div class="chart-title">
+          <h1 id="fund-name"></h1>
+          <p id="chart-sub"></p>
+          <span class="sample-tag" id="sample-tag" hidden>Sample data</span>
+        </div>
+        <div id="chart" class="chart" role="img" aria-label="Growth of $100 chart"></div>
+        <div class="cum"><strong id="cum-val"></strong><span>Cumulative Return, Net</span></div>
+      </div>
+      <p class="asof" id="asof"></p>
+      <div class="metrics" id="metrics"></div>
+      <p class="hint">Click on a metric for definition &amp; methodology</p>
+      <div class="table-scroll"><table class="returns" id="returns"></table></div>
+    </div>
+  </section>
+
+  <section id="strategy" class="panel">
+    <div class="wrap narrow">
+      <h2>Strategy</h2>
+      <p class="lead" id="strategy-intro"></p>
+      <div class="label-rule"><span>Return engines</span></div>
+      <div id="engines" class="engines"></div>
+      <div class="label-rule"><span>Fund terms</span></div>
+      <dl id="terms" class="terms"></dl>
+    </div>
+  </section>
+
+  <section id="letters" class="panel">
+    <div class="wrap narrow">
+      <h2>Letters</h2>
+      <div class="label-rule"><span id="letters-label">Investor letters</span></div>
+      <div id="letters-list"></div>
+    </div>
+  </section>
+
+  <section id="documents" class="panel">
+    <div class="wrap narrow">
+      <h2>Documents</h2>
+      <div class="label-rule"><span>Fund documents</span></div>
+      <div id="docs-list" class="docs"></div>
+      <div class="contact">
+        <span class="label">Investor inquiries</span>
+        <div class="contact-actions">
+          <a id="email-link" class="ghost"></a>
+          <a id="dataroom-link" class="ghost" target="_blank" rel="noopener" hidden>Open data room &rarr;</a>
+          <a id="meet-link" class="btn" target="_blank" rel="noopener">Schedule a call &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<button class="disc-btn" id="disc-btn" type="button"><span aria-hidden="true">&#8601;</span> Disclosures</button>
+<a class="pdf-btn" id="pdf-btn" target="_blank" rel="noopener" aria-label="Download tear sheet" hidden>
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M9 14h6M9 17h4"/></svg>
+</a>
+
+<dialog id="modal">
+  <button class="close" type="button" aria-label="Close">&times;</button>
+  <h3 id="modal-title"></h3>
+  <div id="modal-body"></div>
+</dialog>
+
+<script src="data/fund.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
