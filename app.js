@@ -104,7 +104,8 @@
   function drawChart() {
     const W = chartEl.clientWidth, H = chartEl.clientHeight;
     const small = W < 520;
-    const m = { l: small ? 40 : 52, r: 8, t: 8, b: small ? 34 : 40 };
+    const k = parseFloat(getComputedStyle(document.documentElement).fontSize) / 16;
+    const m = { l: (small ? 40 : 52) * k, r: 8 * k, t: 8 * k, b: (small ? 34 : 40) * k };
     const iw = W - m.l - m.r, ih = H - m.t - m.b;
     const t0 = pts[0].t, t1 = pts[pts.length - 1].t;
     const vmax = Math.max(...nav), vmin = Math.min(...nav);
@@ -118,13 +119,13 @@
     let ticks = "";
     for (let v = Math.ceil(yMin / step) * step; v <= yMax + 0.001; v += step) {
       if (v < yMin + step * 0.4) continue;
-      ticks += `<text x="${m.l - 10}" y="${y(v) + 4}" text-anchor="end">${Math.round(v)}</text>`;
+      ticks += `<text x="${m.l - 10 * k}" y="${y(v) + 4 * k}" text-anchor="end">${Math.round(v)}</text>`;
     }
     let xt = "";
     for (let yr = Math.ceil(t0); yr <= t1; yr++) {
       const xx = x(yr);
       xt += `<line x1="${xx}" x2="${xx}" y1="${m.t + ih}" y2="${m.t + ih + 4}" stroke="var(--line)"/>` +
-        `<text class="xlab" x="${xx}" y="${m.t + ih + 22}" text-anchor="end" transform="rotate(-18 ${xx} ${m.t + ih + 22})">${yr}</text>`;
+        `<text class="xlab" x="${xx}" y="${m.t + ih + 22 * k}" text-anchor="end" transform="rotate(-18 ${xx} ${m.t + ih + 22 * k})">${yr}</text>`;
     }
     chartEl.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
       <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
@@ -149,7 +150,7 @@
       hd.setAttribute("cx", cx); hd.setAttribute("cy", cy); hd.setAttribute("visibility", "visible");
       const r1 = best ? monthly[best - 1].r : null;
       tip.textContent = `${p.label} · $${p.v.toFixed(2)}${r1 !== null ? " · " + fmtPct(r1, 2) : ""}`;
-      tip.style.left = Math.min(Math.max(cx, 90), W - 90) + "px"; tip.style.top = cy + "px"; tip.style.opacity = 1;
+      tip.style.left = Math.min(Math.max(cx, 90 * k), W - 90 * k) + "px"; tip.style.top = cy + "px"; tip.style.opacity = 1;
     });
     svg.addEventListener("pointerleave", () => { tip.style.opacity = 0; hl.setAttribute("visibility", "hidden"); hd.setAttribute("visibility", "hidden"); });
   }
